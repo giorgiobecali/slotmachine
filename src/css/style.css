@@ -1,0 +1,126 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  background-image: url("../assets/bg.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 1200px) {
+  body {
+    background-image: url("../assets/bg_small.jpg");
+  }
+}
+
+#reels {
+  display: flex;
+  width: 100vw;
+  height: calc((3 / 5) * 100vw);
+  max-height: calc(90vh - 50px - 40px);
+  max-width: calc((5 / 3) * (90vh - 50px - 40px));
+  border: 10px solid; /* Adjust thickness here */
+  border-image: linear-gradient(to bottom, #0f2027, #203a43, #2c5364) 1;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  border-radius: 20px; /* Optional: rounded corners */
+  overflow: hidden; /* Ensures nothing leaks outside the border */
+}
+
+.slot-machine-body {
+  padding: 20px;
+  background: #2c5364; /* Dark color for the outer body */
+  box-shadow: 0 0 60px rgba(0,0,0,0.5);
+  border-radius: 30px; /* Optional: for a more rounded exterior */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reel {
+  overflow: hidden;
+  width: 20%;
+  height: 100%;
+  position: relative;
+}
+
+.reel > .icons {
+  position: relative;
+}
+
+.reel > .icons > img {
+  width: calc(100% + 6px);
+  margin: -3px 0 0 -3px;
+  height: auto;
+
+  /* enable gpu accelaration, fixes iOS flicker */
+  transform: translate3d(0, 0, 0);
+}
+
+#controls {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* Dark space-like gradient */
+  height: 60px; /* Maintaining height for better visual balance */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px; /* Increased padding for better spacing */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Deeper shadow for a more pronounced effect */
+  border-radius: 8px; /* Rounded corners for a sleek look */
+  border: 1px solid #204051; /* Border color to complement the gradient */
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+}
+
+#controls button {
+  background: #ffffff; /* White background for buttons to stand out */
+  border: none; /* No border for a cleaner look */
+  padding: 10px 20px; /* Comfortable padding */
+  border-radius: 5px; /* Rounded edges for buttons */
+  font-weight: bold; /* Bold text for better readability */
+  color: #333; /* Dark text for contrast */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease; /* Smooth transition for interaction effects */
+}
+
+#controls button:hover, #controls button:focus {
+  transform: scale(1.05); /* Slightly enlarge buttons on hover/focus */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth on hover/focus */
+}
+
+#controls button:active {
+  transform: scale(0.95); /* Small shrink effect when button is pressed */
+}
+
+
+
+#jackpot {
+  color: #f4e542; /* Bright, attention-grabbing gold color */
+  font-family: 'Arial Black', Gadget, sans-serif; /* Bold, impactful font */
+  font-size: 50px; /* Larger size for more prominence */
+  text-align: center;
+  text-shadow: 0px 0px 10px rgba(244, 229, 66, 0.8), /* Soft glow around the text */
+               1px 1px 0px #ffc107, /* Slight yellow halo for depth */
+               -1px -1px 0px #ffc107, 
+               1px -1px 0px #ffc107, 
+               -1px 1px 0px #ffc107;
+  animation: neon 1.5s ease-in-out infinite alternate; /* Neon flickering effect */
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 10px #ffe000, 0 0 20px #ffe000, 0 0 30px #ffe000, 0 0 40px #ffdd1a, 0 0 70px #ffdd1a, 0 0 80px #ffdd1a, 0 0 100px #ffdd1a, 0 0 150px #ffdd1a;
+  }
+  to {
+    text-shadow: 0 0 5px #ffe000, 0 0 10px #ffe000, 0 0 15px #ffe000, 0 0 20px #ffdd1a, 0 0 35px #ffdd1a, 0 0 40px #ffdd1a, 0 0 50px #ffdd1a, 0 0 75px #ffdd1a;
+  }
+}
+
+
+#slot.inverted .reel {
+  transform: scaleY(-1);
+}
+
+#slot.inverted .reel > .icons > img {
+  transform: scaleY(-1);
+}
